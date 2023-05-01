@@ -6,7 +6,7 @@ final Widget? mobile;
 final Widget? tablet;
 final Widget? desktop;
 
-  const Responsive({super.key,  this.mobile,this.tablet,this.desktop}):super();
+  const Responsive({super.key, this.mobile, this.tablet, this.desktop}) : super();
 
   static bool isMobile(BuildContext context) =>
       MediaQuery.of(context).size.width < 850;
@@ -35,12 +35,12 @@ final Widget? desktop;
 
   @override
   Widget build(BuildContext context) {
-    final Size _size = MediaQuery.of(context).size;
+    final Size size = MediaQuery.of(context).size;
     return LayoutBuilder(builder:  (BuildContext context, BoxConstraints boxConstraints){
-if(_size.width< 850)
+if(size.width< 850)
 {
   return mobile!;
-  }else if(_size.width>=850 && _size.width <1100)
+  }else if(size.width>=850 && size.width <1100)
 {
   return tablet!;
 }else {
