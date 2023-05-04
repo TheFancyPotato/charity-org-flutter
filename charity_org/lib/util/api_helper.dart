@@ -1,12 +1,10 @@
 
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:http/http.dart' as http;
-
 import 'exceptions.dart';
 
-class ApiBaseHelper {
+class ApiBase{
   
 final String _baseUrl = "http://api.ourorg/";
   
@@ -21,11 +19,28 @@ Future<dynamic> get(String url) async {
     return responseJson;
 }
 
-put(String url, String json){
-http.put(Uri.parse(_baseUrl + url), body: );
-
-
+Future<dynamic> post(String url, dynamic object) async{
+   var responseJson;
+  try{
+    final response = await http.post(Uri.parse(_baseUrl + url), body: jsonEncode(object));
+    responseJson = _returnResponse(response);
+  } on SocketException {
+    throw FetchDataException('No internet connection');
+  }
+  return responseJson;
 }
+
+Future<dynamic> put(String url , ) async{
+  var responseJson;
+  try{
+    final response = await http.put(Uri.parse(_baseUrl + url), body: jsonEncode(json));
+    responseJson = _returnResponse(response);
+  } on SocketException {
+    throw FetchDataException('No internet connection');
+  }
+  return responseJson;
+}
+
 
 dynamic _returnResponse(http.Response response) {
   switch (response.statusCode) {
