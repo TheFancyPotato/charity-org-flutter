@@ -3,18 +3,8 @@ enum UserRole  {
   readOnly,
   readWrite,
   }
-
-  UserRole? setUserRole(int role){
-switch(role){
-  case 1 : return UserRole.superAdmin ;
-  case 2 : return UserRole.readWrite;
-  case 3 : return UserRole.readOnly;
-}
-
-
-     }
-
-//Provider Social Status
+  
+  //Provider Social Status 
 enum ProviderSS { 
   widow,
 	divorced,
