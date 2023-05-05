@@ -9,6 +9,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(child: Text("يا شعلة الصدرين 0"));
+    return MaterialApp(home:  Container(child: Text("يا شعلة الصدرين 0"),)  );
   }
 }
