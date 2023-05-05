@@ -1,3 +1,4 @@
+import 'package:charity_org/views/log_in_page/log_in_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {

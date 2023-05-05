@@ -28,9 +28,8 @@ class User {
     data["password"] = password;
     data["role"] = getUserRole();
   return data;
-
-
   }
+
 static UserRole? setUserRole(int roleId){
 switch(roleId){
   case 1 : return UserRole.superAdmin ;
@@ -38,7 +37,6 @@ switch(roleId){
   case 3 : return UserRole.readOnly;
   default: return null;
   }
-
 }
 
   int? getUserRole(){
