@@ -1,3 +1,4 @@
+import 'package:charity_org/views/start_views/start_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,6 +10,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home:  Container(child: Text("يا شعلة الصدرين 0"),)  );
+    return MaterialApp(home:  StartView()  );
   }
 }
