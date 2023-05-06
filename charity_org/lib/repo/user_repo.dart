@@ -1,6 +1,6 @@
 abstract class UserRepository{
 
-register(String email, String password, String name);
-login( String email, String password);
-
+Map<String, dynamic> register(String email, String password, String name);
+Map<String, dynamic> login( String email, String password);
+logOut();
 }
