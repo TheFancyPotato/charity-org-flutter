@@ -1,95 +1,72 @@
-import 'package:charity_org/views/homeScreen/HomeScreen.dart';
+import 'package:charity_org/util/responsive.dart';
 import 'package:charity_org/views/log_in_screen/log_in_screen_model.dart';
-import 'package:charity_org/views/start_views/start_view.dart';
 import 'package:flutter/material.dart';
+import 'components/custom_button.dart';
+import 'components/custom_form_field.dart';
 
-class SignupScreen extends StatefulWidget {
-  const SignupScreen({super.key});
+class LogInScreen extends StatelessWidget {
+  LogInScreen({super.key});
 
-  @override
-  _SignupScreenState createState() => _SignupScreenState();
-}
-
-class _SignupScreenState extends State<SignupScreen> {
-  final _formKey = GlobalKey<FormState>();
-  var data = LogInScreenModel();
+  final LogInScreenModelView data = LogInScreenModelView();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Form(
-        key: _formKey,
-        child: Container(
-          padding: EdgeInsets.only(left: 30, right: 30),
-          color: data.backgroundcolor,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              data.logo,
-              SizedBox(height: 20),
-              TextFormField(
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(borderRadius: data.borderRadius),
-                    labelText: data.emailText),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return data.email_empty;
-                  } else if (!data.emailRegExp.hasMatch(value)) {
-                    return data.email_valid;
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  data.email = value!;
-                },
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              TextFormField(
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(borderRadius: data.borderRadius),
-                    labelText: data.passwordText),
-                obscureText: true,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return data.password_empty;
-                  } else if (!data.passwordRegExp.hasMatch(value)) {
-                    return data.email_valid;
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  data.password = value!;
-                },
-              ),
-              SizedBox(
-                height: 25,
-              ),
-              Container(
-                height: 50 ,
-                width: 200,
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: data.borderRadius,
+      backgroundColor: Colors.grey[300],
+      body: Center(
+        child: Form(
+          key: data.formKey,
+          child: Container(
+            padding: const EdgeInsets.only(left: 30, right: 30),
+            color: Colors.white,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                if (Responsive.isDesktop(context))
+                  Expanded(
+                    flex: 2,
+                    child: Image.asset("assets/images/logo.jpg"),
+                  ),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Image.asset(
+                          "assets/images/logo.jpg",
+                        ),
+                        CustomFormField(
+                          data: data,
+                          labelText: data.emailText,
+                          validator: (value) {
+                            return data.emailValidator(value);
+                          },
+                          onSaved: (value) {
+                            data.onSavedEmail(value);
+                          },
+                        ),
+                        CustomFormField(
+                          data: data,
+                          labelText: data.passwordText,
+                          validator: (value) {
+                            return data.passwordValidator(value);
+                          },
+                          onSaved: (value) {
+                            data.onSavedPassword(value);
+                          },
+                        ),
+                        CustomButton(
+                          data: data,
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-                child: TextButton(
-                  child: Text(data.sign_in_text, style: data.textStyle),
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      _formKey.currentState!.save();
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HomeScreen()));
-                      // Do something with the user's input
-                    }
-                  },
-                ),
-              ),
-            ],
-          ),        ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
