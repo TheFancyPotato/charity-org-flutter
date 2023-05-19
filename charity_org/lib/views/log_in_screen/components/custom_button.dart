@@ -29,7 +29,7 @@ class CustomButton extends StatelessWidget {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const HomeScreen()));
+                    builder: (context) => HomeScreen()));
             // Do something with the user's input
           }
         },

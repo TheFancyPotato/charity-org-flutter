@@ -58,7 +58,7 @@ class LogInScreenModelView {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+          context, MaterialPageRoute(builder: (context) =>  HomeScreen()));
       // Do something with the user's input
     }
   }
