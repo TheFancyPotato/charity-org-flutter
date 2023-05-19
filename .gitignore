@@ -42,3 +42,5 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+.idea/libraries/Dart_SDK.xml
+.idea/modules.xml
