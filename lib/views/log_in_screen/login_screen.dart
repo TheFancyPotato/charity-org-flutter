@@ -1,5 +1,5 @@
 import 'package:charity_org/util/responsive.dart';
-import 'package:charity_org/views/log_in_screen/log_in_screen_model.dart';
+import 'package:charity_org/views/log_in_screen/login_screen_view_model.dart';
 import 'package:flutter/material.dart';
 import 'components/custom_button.dart';
 import 'components/custom_form_field.dart';

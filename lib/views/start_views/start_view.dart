@@ -1,7 +1,7 @@
 import 'package:charity_org/views/start_views/start_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-import '../log_in_screen/log_in_screen.dart';
+import '../log_in_screen/login_screen.dart';
 
 class StartView extends StatelessWidget {
    StartView({Key? key}) : super(key: key);

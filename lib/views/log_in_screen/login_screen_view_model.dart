@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../homeScreen/HomeScreen.dart';
+import '../homeScreen/home_screen.dart';
 
 class LogInScreenModelView {
   late String email;
   late String password;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
 
   String emailText = " Email ";
   String passwordText = " Password ";
@@ -15,8 +14,6 @@ class LogInScreenModelView {
   String emailValid = " Please enter a valid email ";
   String passwordValid = " Please enter a valid password ";
   String passwordEmpty = " Please enter your password ";
-
-  Color backgroundcolor = Colors.white;
 
   TextStyle textStyle = const TextStyle(fontSize: 16, color: Colors.white);
 
@@ -52,7 +49,7 @@ class LogInScreenModelView {
     password = value!;
   }
 
-  logIn(BuildContext context) async{
+  logIn(BuildContext context) async {
     bool isWaiting = true;
     await Future.delayed(const Duration(seconds: 2));
     if (formKey.currentState!.validate()) {

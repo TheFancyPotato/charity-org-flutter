@@ -1,7 +1,7 @@
 import 'package:charity_org/util/responsive.dart';
 import 'package:flutter/material.dart';
-import '../../homeScreen/HomeScreen.dart';
-import '../log_in_screen_model.dart';
+import '../../homeScreen/home_screen.dart';
+import '../login_screen_view_model.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
