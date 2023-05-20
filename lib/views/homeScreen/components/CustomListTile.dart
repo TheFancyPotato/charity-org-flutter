@@ -1,4 +1,5 @@
-import 'package:charity_org/views/Family%20information%20screen/FamilyInformatiomView.dart';
+//import 'package:charity_org/views/Family%20information%20screen/FamilyInformatiomView.dart';
+import 'package:charity_org/views/Family_details/Family_details_view.dart';
 import 'package:flutter/material.dart';
 
 class CustomListTile extends StatelessWidget {
@@ -16,7 +17,7 @@ class CustomListTile extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => const FamilyInformationView()));
+                builder: (context) => const Family_details()));
       },
       leading: Text("${this.leading}",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
