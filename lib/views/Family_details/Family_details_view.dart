@@ -14,7 +14,7 @@ class Family_details extends StatefulWidget {
 }
 
 class _Family_detailsState extends State<Family_details> {
-  FamilyDetailsViewModel data = FamilyDetailsViewModel();
+  FamilyDetailsViewModel _data = FamilyDetailsViewModel();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,8 +31,7 @@ class _Family_detailsState extends State<Family_details> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       CoustomButton(icon: Icons.home, color: Colors.deepOrange),
-                      Text("معلومات العائلة ",
-                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      _data.PageTitle
                     ]),
               ),
               Row(
@@ -46,13 +45,13 @@ class _Family_detailsState extends State<Family_details> {
                       shrinkWrap: true,
                       itemCount: Responsive.isTablet(context) ||
                               Responsive.isMobile(context)
-                          ? data.infofamily.length
-                          : data.infofamily.length - 5,
+                          ? _data.infofamily.length
+                          : _data.infofamily.length - 5,
                       itemBuilder: (context, index) {
                         return CoustomContainer(
-                            familydetail: data.familydetail[index],
-                            infoicon: data.icons[index],
-                            valueOfDetail: data.infofamily[index]);
+                            familydetail: _data.familydetail[index],
+                            infoicon: _data.icons[index],
+                            valueOfDetail: _data.infofamily[index]);
                       },
                     ),
                   ),
@@ -63,13 +62,13 @@ class _Family_detailsState extends State<Family_details> {
                         physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemCount: Responsive.isDesktop(context)
-                            ? data.infofamily.length - 6
+                            ? _data.infofamily.length - 6
                             : 0,
                         itemBuilder: (context, index) {
                           return CoustomContainer(
-                              familydetail: data.familydetail[index + 6],
-                              infoicon: data.icons[index + 6],
-                              valueOfDetail: data.infofamily[index + 6]);
+                              familydetail: _data.familydetail[index + 6],
+                              infoicon: _data.icons[index + 6],
+                              valueOfDetail: _data.infofamily[index + 6]);
                         },
                       ),
                     ),

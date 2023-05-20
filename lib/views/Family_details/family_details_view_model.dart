@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../homeScreen/home_screen.dart';
 
 class FamilyDetailsViewModel {
+  Text PageTitle = Text("المعلومات الخاصة بالعائلة  ",style: TextStyle(fontWeight: FontWeight.bold , fontSize: 20),);
   Image logo = Image.asset(
     "assets/images/logo.jpg",
     width: 200,
