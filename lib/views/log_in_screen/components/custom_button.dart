@@ -1,13 +1,9 @@
 import 'package:charity_org/util/responsive.dart';
 import 'package:flutter/material.dart';
-import '../../homeScreen/home_screen.dart';
 import '../login_screen_view_model.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({
-    super.key,
-    required this.data
-  });
+  const CustomButton({super.key, required this.data});
 
   final LogInScreenModelView data;
 
@@ -26,11 +22,7 @@ class CustomButton extends StatelessWidget {
         onPressed: () {
           if (data.formKey.currentState!.validate()) {
             data.formKey.currentState!.save();
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const HomeScreen()));
-            // Do something with the user's input
+            data.logIn(context);
           }
         },
       ),

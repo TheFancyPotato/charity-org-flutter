@@ -20,9 +20,12 @@ class CustomFormField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 10, bottom: 10),
       child: TextFormField(
+        textDirection: TextDirection.rtl,
         cursorColor: Colors.black,
         decoration: InputDecoration(
-      labelStyle: const TextStyle(color: Colors.black),
+            hintTextDirection: TextDirection.rtl,
+            alignLabelWithHint: true,
+            labelStyle: const TextStyle(color: Colors.black),
             border: OutlineInputBorder(
               borderRadius: data.borderRadius,
               borderSide: const BorderSide(
@@ -32,7 +35,8 @@ class CustomFormField extends StatelessWidget {
             focusedBorder: OutlineInputBorder(
                 borderRadius: data.borderRadius,
                 borderSide: const BorderSide(color: Colors.black)),
-            labelText: labelText),
+            label: Text(labelText),
+            floatingLabelAlignment: FloatingLabelAlignment.center),
         validator: validator,
         onSaved: onSaved,
       ),
