@@ -56,7 +56,7 @@ class Family {
       providerSS: ProviderSS.getSS(json["provider_social_status"]),
       status: FamilyStatus.getStatus(json["status"]),
       type: FamilyType.getType(json["type"]),
-      cityID: json["address"],
+      cityID: json["city_id"],
       address: json["address"],
       income: json["income"],
       incomeType: IncomeType.getType(json["income_type"]),
