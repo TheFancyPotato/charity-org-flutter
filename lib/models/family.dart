@@ -7,8 +7,8 @@ class Family {
   final int? membersCount;
   final int? youngersCount;
   final ProviderSS? providerSS;
-  final FamilyStatus? Status;
-  final FamilyType? Type;
+  final FamilyStatus? status;
+  final FamilyType? type;
   final int? cityID;
   final String? address;
   final int? income;
@@ -30,8 +30,8 @@ class Family {
       this.membersCount,
       this.youngersCount,
       this.providerSS,
-      this.Status,
-      this.Type,
+      this.status,
+      this.type,
       this.cityID,
       this.address,
       this.income,
@@ -54,8 +54,8 @@ class Family {
       membersCount: json["members_count"],
       youngersCount: json["youngers_count"],
       providerSS: ProviderSS.getSS(json["provider_social_status"]),
-      Status: FamilyStatus.getStatus(json["status"]),
-      Type: FamilyType.getType(json["type"]),
+      status: FamilyStatus.getStatus(json["status"]),
+      type: FamilyType.getType(json["type"]),
       cityID: json["address"],
       address: json["address"],
       income: json["income"],
@@ -80,8 +80,8 @@ class Family {
     data["members_count"] = membersCount;
     data["youngers_count"] = youngersCount;
     data["provider_social_status"] = providerSS!.toInt();
-    data["type"] = Type!.toInt();
-    data["status"] = Status!.toInt();
+    data["type"] = type!.toInt();
+    data["status"] = status!.toInt();
     data["city id"] = cityID;
     data["address"] = address;
     data["income"] = income;
