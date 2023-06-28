@@ -2,9 +2,14 @@ import 'package:charity_org/views/SettingViews/SettingView.dart';
 //import 'package:charity_org/views/datatable/DataTableView.dart';
 import 'package:charity_org/views/homeScreen/HomeScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:sidebarx/sidebarx.dart';
+
+import '../Family_details/family_details_view.dart';
 
 class BottomNavBarViewModel {
-  List screens = [DataTableView(), HomeScreen(), SettingView()];
+  final controllerx = SidebarXController(selectedIndex: 1, extended: true);
+
+  List screens = [const FamilyDetails(), HomeScreen(), const SettingView()];
   int x = 1;
   Color seclect = Colors.black;
   Color? unselect = Colors.grey[500];
@@ -14,10 +19,9 @@ class BottomNavBarViewModel {
     const BottomNavigationBarItem(icon: Icon(Icons.home), label: "home"),
     const BottomNavigationBarItem(icon: Icon(Icons.settings), label: "setting")
   ];
-  ontap(int val) {
+  ontap(int val,SidebarXController controller) {
     this.x = val;
+    controller.selectedIndex==x;
   }
 }
 
-class DataTableView {
-}

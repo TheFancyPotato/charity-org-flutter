@@ -1,39 +1,49 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../homeScreen/home_screen.dart';
 
 class LogInScreenModelView {
-  late String email;
+  late String user;
   late String password;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
-  String emailText = " Email ";
-  String passwordText = " Password ";
+  Text welcome = const  Text("  مرحبا بك ",
+      style: TextStyle(
+          fontSize: 30,
+          fontWeight: FontWeight.bold));
+  Icon welcomeIcon = Icon(
+    Icons.waving_hand,
+    size: 40,
+    color: Colors.yellow.shade600,
+  );
+  String userText=" user name  ";
+  String passwordText = " password ";
   String logInText = " Log in ";
-  String emailEmpty = " Please enter your email ";
-  String emailValid = " Please enter a valid email ";
+  String userEmpty = " Please enter your user name  ";
+  String userValid = " Please enter a valid user name ";
   String passwordValid = " Please enter a valid password ";
   String passwordEmpty = " Please enter your password ";
 
   TextStyle textStyle = const TextStyle(fontSize: 16, color: Colors.white);
 
-  final RegExp emailRegExp = RegExp(r'^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+');
+  final RegExp userRegExp = RegExp( r'^[a-zA-Z0-9]+$');
   final RegExp passwordRegExp =
       RegExp(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$');
+
 
   BorderRadius borderRadius = BorderRadius.circular(20);
 
   String? emailValidator(String? value) {
     if (value!.isEmpty) {
-      return emailEmpty;
-    } else if (!emailRegExp.hasMatch(value)) {
-      return emailValid;
+      return userEmpty;
+    } else if (!userRegExp.hasMatch(value)) {
+      return userValid;
     }
     return null;
   }
 
   onSavedEmail(String? value) {
-    email = value!;
+    user = value!;
   }
 
   String? passwordValidator(value) {

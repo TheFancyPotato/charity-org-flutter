@@ -12,7 +12,7 @@ class LogInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.white,
       body: Center(
         child: Form(
           key: data.formKey,
@@ -26,19 +26,27 @@ class LogInScreen extends StatelessWidget {
                 if (Responsive.isDesktop(context))
                   Expanded(
                     flex: 2,
-                    child: Image.asset("assets/images/logo.jpg"),
+                    child: Image.asset("assets/images/img.png",
+                       ),
                   ),
                 Expanded(
                   child: SingleChildScrollView(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
-                        Image.asset(
-                          "assets/images/logo.jpg",
+                        Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children:  [
+                             data.welcomeIcon,
+                             data.welcome,
+                            ],
+                          ),
                         ),
                         CustomFormField(
                           data: data,
-                          labelText: data.emailText,
+                          labelText: data.userText,
                           validator: (value) {
                             return data.emailValidator(value);
                           },
@@ -69,5 +77,19 @@ class LogInScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class NewWidget extends StatelessWidget {
+  const NewWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const  Text("  مرحبا بك ",
+         style: TextStyle(
+             fontSize: 30,
+             fontWeight: FontWeight.bold));
   }
 }

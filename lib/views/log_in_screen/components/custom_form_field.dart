@@ -20,18 +20,19 @@ class CustomFormField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 10, bottom: 10),
       child: TextFormField(
+
         cursorColor: Colors.black,
         decoration: InputDecoration(
-      labelStyle: const TextStyle(color: Colors.black),
+      labelStyle: const TextStyle(color: Colors.grey),
             border: OutlineInputBorder(
               borderRadius: data.borderRadius,
-              borderSide: const BorderSide(
-                color: Colors.black,
+              borderSide:  BorderSide(
+                color: Colors.blueAccent,
               ),
             ),
             focusedBorder: OutlineInputBorder(
                 borderRadius: data.borderRadius,
-                borderSide: const BorderSide(color: Colors.black)),
+                borderSide:  BorderSide(color: Colors.grey.shade400)),
             labelText: labelText),
         validator: validator,
         onSaved: onSaved,

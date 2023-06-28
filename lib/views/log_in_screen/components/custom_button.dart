@@ -1,5 +1,6 @@
 import 'package:charity_org/util/responsive.dart';
 import 'package:flutter/material.dart';
+import '../../MainScreen/BottomNavigationBarView.dart';
 import '../../homeScreen/home_screen.dart';
 import '../login_screen_view_model.dart';
 
@@ -29,7 +30,7 @@ class CustomButton extends StatelessWidget {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const HomeScreen()));
+                    builder: (context) => const BottomNavigationBarview()));
             // Do something with the user's input
           }
         },
