@@ -6,15 +6,15 @@ class Family {
   final String providerPhone;
   final int? membersCount;
   final int? youngersCount;
+  final int? cityID;
+  final int? income;
+  final int? rentCost;
+  final int? sharesCount;
   final ProviderSS? providerSS;
   final FamilyStatus? status;
   final FamilyType? type;
-  final int? cityID;
   final String? address;
-  final int? income;
   final HousingType? housingType;
-  final int? rentCost;
-  final int? sharesCount;
   final IncomeType? incomeType;
   final String? otherOrgs;
   final String? notes;
@@ -65,9 +65,15 @@ class Family {
       notes: json["notes"],
       otherOrgs: json["other_orgs"],
       rentCost: json["rent_cost"],
-      createdAt: json["created_at"],
-      updatedAt: json["updated_at"],
-      deletedAt: json["deleted_at"],
+      createdAt: json["created_at"] != null
+          ? DateTime.parse(json["created_at"])
+          : null,
+      updatedAt: json["updated_at"] != null
+          ? DateTime.parse(json["updated_at"])
+          : null,
+      deletedAt: json["deleted_at"] != null
+          ? DateTime.parse(json["deleted_at"])
+          : null,
       documents: json["docs"],
     );
   }
