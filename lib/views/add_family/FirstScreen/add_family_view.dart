@@ -126,7 +126,7 @@ class AddFamilyViewFirstScreenState extends State<AddFamilyViewFirstScreen>
                                 MaterialPageRoute(
                                     builder: (context) =>
                                         AddFamilyViewSecondScreen(
-                                          key1: myKey,
+                                          name:name ,number: number,
                                         )));
                           }
                         },

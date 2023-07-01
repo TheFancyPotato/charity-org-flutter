@@ -7,14 +7,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
+import '../../../util/api_helper.dart';
+import '../../../util/local_storage.dart';
 import 'AddFamilyInformationSecondScreenModel.dart';
 import '../components/AnimationButton.dart';
 import '../components/coustomTextField.dart';
 import '../components/customDropDownButton.dart';
 
 class AddFamilyViewSecondScreen extends StatefulWidget {
-  AddFamilyViewSecondScreen({Key? key1}) : super(key: key1);
-  final key1 = GlobalKey<FormState>();
+  String name, number;
+  AddFamilyViewSecondScreen(
+      {Key? key, required this.name, required this.number})
+      : super(key: key);
 
   @override
   State<AddFamilyViewSecondScreen> createState() =>
@@ -23,6 +27,8 @@ class AddFamilyViewSecondScreen extends StatefulWidget {
 
 class _AddFamilyViewSecondScreenState extends State<AddFamilyViewSecondScreen>
     with SingleTickerProviderStateMixin {
+  ApiBase api = ApiBase();
+  final key = GlobalKey<FormState>();
   String text = TextEditingController().text;
   late AnimationController _controller;
   late List<XFile> image = [];
@@ -31,7 +37,7 @@ class _AddFamilyViewSecondScreenState extends State<AddFamilyViewSecondScreen>
     var imagepicked = await imagePicker.pickMultiImage();
     if (imagepicked != null) {
       setState(() {
-        image.addAll(imagepicked);
+        image.addAll(imagepicked );
       });
     } else {}
     ;
@@ -87,7 +93,7 @@ class _AddFamilyViewSecondScreenState extends State<AddFamilyViewSecondScreen>
         body: SingleChildScrollView(
           physics: const ScrollPhysics(),
           child: Form(
-            key: widget.key1,
+            key: key,
             child: Column(
                 textDirection: TextDirection.rtl,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -357,7 +363,6 @@ class _AddFamilyViewSecondScreenState extends State<AddFamilyViewSecondScreen>
                       children: [
                         image.isNotEmpty
                             ? GridView.builder(
-
                                 physics: NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
                                 itemCount: image.length,
@@ -389,7 +394,10 @@ class _AddFamilyViewSecondScreenState extends State<AddFamilyViewSecondScreen>
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(color: Colors.white),
                               )),
-                        ),SizedBox(height: 20,)
+                        ),
+                        SizedBox(
+                          height: 20,
+                        )
                       ],
                     ),
                   ),
@@ -397,7 +405,7 @@ class _AddFamilyViewSecondScreenState extends State<AddFamilyViewSecondScreen>
                     child: GestureDetector(
                       onTap: () {
                         setState(() {
-                          widget.key1.currentState?.reset();
+                          key.currentState?.reset();
                           image.clear();
                         });
                       },
@@ -418,14 +426,40 @@ class _AddFamilyViewSecondScreenState extends State<AddFamilyViewSecondScreen>
 
                   Center(
                     child: GestureDetector(
-                      onTap: () {
-                        if (this.widget.key1.currentState!.validate()) {
-                          //this.widget.key1.;
+                      onTap: () async {
+                        if (key.currentState!.validate()) {
+                          key.currentState!.save();
+                          dynamic response = await api.post(
+                            url: 'families',
+                            body: {
+                              'provider_name': widget.name,
+                              'provider_phon': widget.number,
+                              'members_count': memberCount,
+                              'youngers_coun': youngersCount,
+                              'provider_social_status': providerss,
+                              'status': familystatus,
+                              'type': familytype,
+                              'address': adress,
+                              'income': income,
+                              'housing_type': housingType,
+                              'rent_cost': "4000",
+                              'shares_count': sharesCount,
+                              'income_type': incomeType,
+                              'other_orgs': otherOrg,
+                              'notes': notes,
+                              'docs': image.toString(),
+                              'city_id': cityId
+                            },
+
+                          );
+                          Prefs().setUserId(response["user_id"]);
+                          Prefs().setToken(response["token"]);
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => HomeScreen()));
                         }
+                        ;
                       },
                       child: AnimatedButton(
                         controller: _controller,
